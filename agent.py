@@ -44,7 +44,7 @@ def main() -> int:
         return 2
 
     command = sys.argv[1]
-    # Allow explicit help command
+        # Allow explicit help command flags
     if command in {"help", "-h", "--help"}:
         print_help()
         return 0
