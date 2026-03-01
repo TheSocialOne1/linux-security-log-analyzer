@@ -17,14 +17,15 @@ Commands:
 import json
 import sys
 
+from skills.registry import SKILLS
 from skills.analyze_log import analyze_log_file
 from skills.export_json import export_json
 
-
 def print_help() -> None:
     """Print CLI usage instructions."""
-    print(
+    help_text = (
         "Usage:\n"
+        "  python agent.py list\n"
         "  python agent.py analyze-log <log_file>\n"
         "  python agent.py export-json <log_file> <output.json>\n"
         "\n"
@@ -32,6 +33,7 @@ def print_help() -> None:
         "  python agent.py analyze-log sample_logs/secure.log\n"
         "  python agent.py export-json sample_logs/secure.log report.json\n"
     )
+    print(help_text)
 
 
 def main() -> int:
@@ -47,6 +49,14 @@ def main() -> int:
         # Allow explicit help command flags
     if command in {"help", "-h", "--help"}:
         print_help()
+        return 0
+	    # Command: list (show available skills)
+    if command == "list":
+        print("Available skills:\n")
+        for name, meta in SKILLS.items():
+            args = " ".join(meta["args"])
+            print(f"- {name} {args}")
+            print(f"  {meta['description']}\n")
         return 0
 
     # Command: analyze-log <log_file>
