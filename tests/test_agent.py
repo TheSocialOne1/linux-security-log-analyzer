@@ -1,4 +1,4 @@
-from agent import analyze_log_file
+from skills.analyze_log import analyze_log_file
 
 
 def test_analyze_log_file_returns_expected_values(tmp_path):
