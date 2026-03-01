@@ -44,6 +44,10 @@ def main() -> int:
         return 2
 
     command = sys.argv[1]
+    # Allow explicit help command
+    if command in {"help", "-h", "--help"}:
+        print_help()
+        return 0
 
     # Command: analyze-log <log_file>
     if command == "analyze-log":
