@@ -13,3 +13,4 @@ __pycache__/
 # Pytest
 .pytest_cache/
 report.json
+report.json
