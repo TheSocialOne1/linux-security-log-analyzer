@@ -1,7 +1,15 @@
+"""
+Test file for skill logic.
+We test skills directly because that is the "business logic" we care about.
+"""
+
 from skills.analyze_log import analyze_log_file
 
 
 def test_analyze_log_file_returns_expected_values(tmp_path):
+    """
+    Ensure analyze_log_file returns correct structured data.
+    """
     log = tmp_path / "secure.log"
     log.write_text(
         "Failed password for root from 192.168.1.51 port 22 ssh2\n"
